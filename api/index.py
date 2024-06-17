@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post("/gpt")
+@app.post("/api/python")
 async def get_gpt_response(request: GPTRequest) -> StreamingResponse:
     stream = client.chat.completions.create(
 
