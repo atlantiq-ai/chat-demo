@@ -30,7 +30,7 @@ export default function Component() {
 
     try {
       const response = await fetch("/api/python", {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
