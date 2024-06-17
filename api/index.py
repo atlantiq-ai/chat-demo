@@ -23,10 +23,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/api/python")
+@app.post("/api/gpt")
 async def get_gpt_response(request: GPTRequest) -> StreamingResponse:
     stream = client.chat.completions.create(
-
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": request.message}],
         stream=True,
@@ -38,3 +37,8 @@ async def get_gpt_response(request: GPTRequest) -> StreamingResponse:
                 yield chunk.choices[0].delta.content
 
     return StreamingResponse(event_generator(), media_type="text/plain")
+
+# New endpoint that returns "yes the button is working"
+@app.get("/api/check")
+async def check_button():
+    return {"message": "yes the button is working"}
