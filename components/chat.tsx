@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
@@ -76,7 +75,7 @@ export default function Component() {
     return messages.map((msg, index) => (
       <div
         key={index}
-        className={` flex items-${msg.fromUser ? "end" : "start"} gap-3 max-w-1/2 py-3`}
+        className={`flex items-${msg.fromUser ? "end" : "start"} gap-3 max-w-full py-3`}
       >
         {!msg.fromUser && (
           <Avatar>
@@ -87,7 +86,7 @@ export default function Component() {
           </Avatar>
         )}
         <div
-          className={`bg-${msg.fromUser ? "purple-500 text-white" : "gray-200"} rounded-lg p-2 ${msg.fromUser ? "ml-auto" : ""} max-w-1/2`}
+          className={`bg-${msg.fromUser ? "purple-500 text-white" : "gray-200"} rounded-lg p-2 ${msg.fromUser ? "ml-auto" : ""} max-w-full`}
         >
           <p>{msg.text}</p>
         </div>
@@ -107,24 +106,24 @@ export default function Component() {
   };
 
   return (
-    <div className="p-6 bg-white border rounded-lg">
+    <div className="p-4 sm:p-6 bg-white border rounded-lg">
       <div className="flex items-center mb-4">
         <Avatar className="w-12 h-12 rounded-full mr-4">
           <img src="/placeholder.png" alt="Avatar" />
         </Avatar>
 
-        <h1 className="text-3xl font-semibold">
+        <h1 className="text-xl sm:text-3xl font-semibold">
           Hi I am Max, Your Executive Assistant!
         </h1>
       </div>
-      <p className="text-gray-700 mb-12">
+      <p className="text-gray-700 mb-8 sm:mb-12">
         Boost sales with our AI-driven sales employee chatbot. Deliver
         personalized recommendations, answer queries instantly, and convert
         leads 24/7 with seamless customer interactions.
       </p>
       {showCards && (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-6 mt-64">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-10 mb-6 mt-32 sm:mt-64">
             <button
               className="p-3 bg-purple-500 text-white border rounded-xl"
               onClick={() =>
@@ -152,7 +151,7 @@ export default function Component() {
               </p>
             </button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-10">
             <button
               className="p-3 bg-purple-500 text-white border rounded-xl"
               onClick={() =>
@@ -200,7 +199,7 @@ export default function Component() {
   );
 }
 
-function PlusIcon(props: any ) {
+function PlusIcon(props: any) {
   return (
     <svg
       {...props}
