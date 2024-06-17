@@ -29,7 +29,7 @@ export default function Component() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/gpt", {
+      const response = await fetch("api/gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,17 +67,6 @@ export default function Component() {
       ]);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleCheck = async () => {
-    try {
-      const response = await fetch("/api/check");
-      const data = await response.json();
-      alert(data.message);
-    } catch (error) {
-      console.error("Error checking API:", error);
-      alert("Error checking API.");
     }
   };
 
@@ -205,9 +194,6 @@ export default function Component() {
         <Button className="ml-2" onClick={handleSubmit}>
           <Send className="text-black h-4 w-4" />
         </Button>
-      </div>
-      <div className="flex justify-center mt-4">
-        <Button onClick={handleCheck}>Check API</Button>
       </div>
     </div>
   );
