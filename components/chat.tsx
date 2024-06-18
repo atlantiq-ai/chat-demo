@@ -34,26 +34,18 @@ export default function Component() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: message }), // Adjusted to match the expected schema
+        body: JSON.stringify({ user_query: message }), // Adjusted to match the expected schema
       });
 
-      if (!response.body) {
-        throw new Error("ReadableStream not supported in this browser.");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
 
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder("utf-8");
-      let result = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        result += decoder.decode(value, { stream: true });
-      }
+      const result = await response.json();
 
       setMessages((prevMessages) => [
         ...prevMessages,
-        { sender: "AtlantiqAI", text: result, fromUser: false }, // API message
+        { sender: "AtlantiqAI", text: result.message, fromUser: false }, // API message
       ]);
     } catch (error) {
       console.error("Error fetching response:", error);
