@@ -29,7 +29,7 @@ export default function Component() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/gpt", {
+      const response = await fetch("http://159.203.20.107:8080/webhook", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
