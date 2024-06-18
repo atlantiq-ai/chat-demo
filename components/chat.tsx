@@ -29,7 +29,7 @@ export default function Component() {
     setLoading(true);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("/api/gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
